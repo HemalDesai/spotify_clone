@@ -3,7 +3,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Sidebar from '../components/Sidebar'
 import Center from '../components/Center'
-import { getSession } from "next-auth/react";
+import { getSession, GetSessionParams } from "next-auth/react";
 import Player from '../components/Player'
 
 
@@ -24,7 +24,7 @@ const Home: NextPage = () => {
 }
 
 export default Home
-export async function getServerSideProps(context){
+export async function getServerSideProps(context: GetSessionParams | undefined){
   const session = await getSession(context);
   return {
     props:{
